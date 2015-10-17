@@ -1,0 +1,12 @@
+vrows       = 513
+vcols       = 513
+squareSize  = 100
+heightScale = 10.0f
+mapName     = res/map/guyang/height.raw
+object      = res/map/guyang/obj.dat
+resource    = res/map/res.dat
+texture     = res/map/desert.bmp
+useOneTex   = true
+searchData  = None
+
+

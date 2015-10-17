@@ -1,0 +1,11 @@
+vrows       = 1025
+vcols       = 1025
+squareSize  = 100
+heightScale = 10.0f
+mapName     = res/map/baiyunebo/height.raw
+object      = res/map/baiyunebo/obj.dat
+resource    = res/map/res.dat
+texture     = res/map/e.bmp
+useOneTex   = true
+searchData  = None
+

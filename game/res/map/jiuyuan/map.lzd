@@ -1,0 +1,12 @@
+vrows       = 513
+vcols       = 513
+squareSize  = 100
+heightScale = 10.0f
+mapName     = res/map/jiuyuan/height.raw
+object      = res/map/jiuyuan/obj.dat
+resource    = res/map/res.dat
+texture     = res/map/desert.bmp
+useOneTex   = true
+searchData  = None
+
+

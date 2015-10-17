@@ -1,0 +1,12 @@
+vrows       = 513
+vcols       = 513
+squareSize  = 100
+heightScale = 10.0f
+mapName     = res/map/donghe/height.raw
+object      = res/map/donghe/obj.dat
+resource    = res/map/res.dat
+texture     = res/map/b.bmp
+useOneTex   = true
+searchData  = None
+
+

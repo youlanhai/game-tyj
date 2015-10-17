@@ -1,0 +1,7 @@
+app
+{
+	name = 天鹰教
+	width = 900
+	height = 600
+	fullscr = false
+}
