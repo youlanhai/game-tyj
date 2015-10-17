@@ -60,10 +60,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\game\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\bin\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\game</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='static_debug|Win32'">..\bin\</OutDir>
@@ -89,7 +89,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\third_part;..\third_part\python\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\engine;..\engine\third_part;..\engine\third_part\python\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;BOOST_PYTHON_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -188,30 +188,30 @@
     <None Include="witg.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Font\Font.vcxproj">
+    <ProjectReference Include="..\engine\Font\Font.vcxproj">
       <Project>{d195a247-64d4-4b4d-a821-befccde9b09d}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\LZ3DEngine\LZ3DEngine.vcxproj">
+    <ProjectReference Include="..\engine\LZ3DEngine\LZ3DEngine.vcxproj">
       <Project>{bf66b9b2-1853-4a8e-9953-fab9af8630db}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\LZData\LZData.vcxproj">
+    <ProjectReference Include="..\engine\LZData\LZData.vcxproj">
       <Project>{de7f3123-5b64-4cda-ad16-e6c5201488ea}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\LZGUI\LZGUI.vcxproj">
+    <ProjectReference Include="..\engine\LZGUI\LZGUI.vcxproj">
       <Project>{3ac4c568-9db8-47fa-8317-92e8dbd9175d}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\Physics\Physics.vcxproj">
+    <ProjectReference Include="..\engine\Physics\Physics.vcxproj">
       <Project>{05a30c55-a7e9-45cb-a40a-46cabad6a77e}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\PyWraper\pyWraper.vcxproj">
+    <ProjectReference Include="..\engine\PyWraper\pyWraper.vcxproj">
       <Project>{751a003b-e140-450a-96f8-90367840eb57}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\utility\utility.vcxproj">
+    <ProjectReference Include="..\engine\utility\utility.vcxproj">
       <Project>{88de6072-be2c-43ff-bbce-35b197ce66ea}</Project>
     </ProjectReference>
   </ItemGroup>

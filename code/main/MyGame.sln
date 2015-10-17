@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LZ3DEngine", "..\LZ3DEngine\LZ3DEngine.vcxproj", "{BF66B9B2-1853-4A8E-9953-FAB9AF8630DB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LZ3DEngine", "..\engine\LZ3DEngine\LZ3DEngine.vcxproj", "{BF66B9B2-1853-4A8E-9953-FAB9AF8630DB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LZGUI", "..\LZGUI\LZGUI.vcxproj", "{3AC4C568-9DB8-47FA-8317-92E8DBD9175D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LZGUI", "..\engine\LZGUI\LZGUI.vcxproj", "{3AC4C568-9DB8-47FA-8317-92E8DBD9175D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyGame", "MyGame.vcxproj", "{77FA5D2C-0BB3-47DA-8EA0-2A4CC69ECB6F}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -11,15 +11,15 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyGame", "MyGame.vcxproj", 
 		{88DE6072-BE2C-43FF-BBCE-35B197CE66EA} = {88DE6072-BE2C-43FF-BBCE-35B197CE66EA}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pyWraper", "..\PyWraper\pyWraper.vcxproj", "{751A003B-E140-450A-96F8-90367840EB57}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pyWraper", "..\engine\PyWraper\pyWraper.vcxproj", "{751A003B-E140-450A-96F8-90367840EB57}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LZData", "..\LZData\LZData.vcxproj", "{DE7F3123-5B64-4CDA-AD16-E6C5201488EA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LZData", "..\engine\LZData\LZData.vcxproj", "{DE7F3123-5B64-4CDA-AD16-E6C5201488EA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Physics", "..\Physics\Physics.vcxproj", "{05A30C55-A7E9-45CB-A40A-46CABAD6A77E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Physics", "..\engine\Physics\Physics.vcxproj", "{05A30C55-A7E9-45CB-A40A-46CABAD6A77E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utility", "..\utility\utility.vcxproj", "{88DE6072-BE2C-43FF-BBCE-35B197CE66EA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utility", "..\engine\utility\utility.vcxproj", "{88DE6072-BE2C-43FF-BBCE-35B197CE66EA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Font", "..\Font\Font.vcxproj", "{D195A247-64D4-4B4D-A821-BEFCCDE9B09D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Font", "..\engine\Font\Font.vcxproj", "{D195A247-64D4-4B4D-A821-BEFCCDE9B09D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

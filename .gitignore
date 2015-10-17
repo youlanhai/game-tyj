@@ -11,3 +11,16 @@
 *.lai
 *.la
 *.a
+
+Debug/
+Release/
+
+#python
+*.pyc
+*.pyo
+
+#vs
+*.sdf
+*.opensdf
+*.exp
+save.dat

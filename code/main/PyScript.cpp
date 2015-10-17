@@ -1,13 +1,13 @@
 ﻿
-#include "..\LZ3DEngine\LZ3DEngine.h"
+#include "LZ3DEngine\LZ3DEngine.h"
 #include "PyScript.h"
-#include "..\PyWraper\pyWraper.h"
+#include "PyWraper\pyWraper.h"
 
 
 #include <string>
 
 #define ENTITIES_PATH "res\\entities"
-#define PYTHON_HOME "..\\third_part\\python"
+#define PYTHON_HOME "..\\code\\engine\\third_part\\python"
 
 using namespace boost::python;
 
