@@ -42,8 +42,8 @@ def initGame() :
 	#天空盒子
 	GData.skyBox = Lazy.getApp().getSkyBox()
 	GData.skyBox.setSkyRange(
-		Lazy.VECTOR3(-50000,-20000,-50000), 
-		Lazy.VECTOR3(50000,30000,50000))
+		Lazy.VECTOR3(-25000,-25000,-25000), 
+		Lazy.VECTOR3(25000,20000,25000))
 		
 	#雾化
 	GData.fog = Lazy.cFog()

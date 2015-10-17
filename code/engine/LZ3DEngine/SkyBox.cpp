@@ -123,7 +123,7 @@ void cSkyBox::render(IDirect3DDevice9 *pDevice)
     if (m_pSource)
     {
         D3DXVECTOR3 pos = m_pSource->getPos();
-        D3DXMatrixTranslation(&world, pos.x, 0.0f, pos.z);
+        D3DXMatrixTranslation(&world, pos.x, pos.y, pos.z);
     }
     else
     {

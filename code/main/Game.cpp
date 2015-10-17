@@ -42,8 +42,9 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE, LPSTR, int)
         return 0;
     }
 
+    std::string title = root->readUtf8(_T("app/name"));
     if(g_game.create(hInstance, 
-        root->readUtf8(_T("app/name")).c_str(),
+        title.c_str(),
         root->readInt(_T("app/width"), 800),
         root->readInt(_T("app/height"), 600),
         root->readBool(_T("app/fullscr"), false)))
@@ -310,6 +311,8 @@ void CGame::render()
 
         __super::render();
 
+        m_pSkyBox->render(m_pd3dDevice);
+
         if (m_pFog)
         {
             m_pFog->setFog();
@@ -317,8 +320,6 @@ void CGame::render()
 
         //设置材质
         CMaterial::setMaterial(m_pd3dDevice,D3DXCOLOR(0.8f,0.8f,0.8f,1.0f));
-
-        m_pSkyBox->render(m_pd3dDevice);
 
         //渲染地面
         cMap::instance()->render(m_pd3dDevice);
