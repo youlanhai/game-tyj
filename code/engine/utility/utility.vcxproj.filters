@@ -101,9 +101,6 @@
     <ClInclude Include="Misc.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="SmartPtr.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -175,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="DataSection\StrStream.h">
       <Filter>DataSection</Filter>
+    </ClInclude>
+    <ClInclude Include="RefPtr.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

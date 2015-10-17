@@ -195,10 +195,6 @@
       <Project>{bf66b9b2-1853-4a8e-9953-fab9af8630db}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\engine\LZData\LZData.vcxproj">
-      <Project>{de7f3123-5b64-4cda-ad16-e6c5201488ea}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
     <ProjectReference Include="..\engine\LZGUI\LZGUI.vcxproj">
       <Project>{3ac4c568-9db8-47fa-8317-92e8dbd9175d}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>

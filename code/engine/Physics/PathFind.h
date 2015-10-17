@@ -3,7 +3,7 @@
 #include "PhysicsConfig.h"
 #include "math3d.h"
 
-#include "../LZ3DEngine/RefPtr.h"
+#include "../utility/RefPtr.h"
 #include "../utility/Utility.h"
 #include <map>
 

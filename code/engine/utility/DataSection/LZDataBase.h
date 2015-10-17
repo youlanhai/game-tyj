@@ -11,7 +11,7 @@
 #include "DataSectionConfig.h"
 
 #include "../UtilConfig.h"
-#include "../SmartPtr.h"
+#include "../RefPtr.h"
 #include "../StringConvTool.h"
 #include "../Misc.h"
 #include "../MemoryPool.h"

@@ -13,8 +13,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyGame", "MyGame.vcxproj", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pyWraper", "..\engine\PyWraper\pyWraper.vcxproj", "{751A003B-E140-450A-96F8-90367840EB57}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LZData", "..\engine\LZData\LZData.vcxproj", "{DE7F3123-5B64-4CDA-AD16-E6C5201488EA}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Physics", "..\engine\Physics\Physics.vcxproj", "{05A30C55-A7E9-45CB-A40A-46CABAD6A77E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utility", "..\engine\utility\utility.vcxproj", "{88DE6072-BE2C-43FF-BBCE-35B197CE66EA}"
@@ -43,10 +41,6 @@ Global
 		{751A003B-E140-450A-96F8-90367840EB57}.Debug|Win32.Build.0 = Debug|Win32
 		{751A003B-E140-450A-96F8-90367840EB57}.Release|Win32.ActiveCfg = Release|Win32
 		{751A003B-E140-450A-96F8-90367840EB57}.Release|Win32.Build.0 = Release|Win32
-		{DE7F3123-5B64-4CDA-AD16-E6C5201488EA}.Debug|Win32.ActiveCfg = Debug|Win32
-		{DE7F3123-5B64-4CDA-AD16-E6C5201488EA}.Debug|Win32.Build.0 = Debug|Win32
-		{DE7F3123-5B64-4CDA-AD16-E6C5201488EA}.Release|Win32.ActiveCfg = Release|Win32
-		{DE7F3123-5B64-4CDA-AD16-E6C5201488EA}.Release|Win32.Build.0 = Release|Win32
 		{05A30C55-A7E9-45CB-A40A-46CABAD6A77E}.Debug|Win32.ActiveCfg = Debug|Win32
 		{05A30C55-A7E9-45CB-A40A-46CABAD6A77E}.Debug|Win32.Build.0 = Debug|Win32
 		{05A30C55-A7E9-45CB-A40A-46CABAD6A77E}.Release|Win32.ActiveCfg = Release|Win32

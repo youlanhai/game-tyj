@@ -63,7 +63,7 @@ void CGame::onRegisterClass(WNDCLASSEX *pwc)
 /*创建设备消息。实现该方法来修改设备。*/
 void CGame::onCreateDevice(D3DPRESENT_PARAMETERS * pParam)
 {
-    pParam->PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
+    pParam->PresentationInterval = D3DPRESENT_INTERVAL_ONE;
 }
 
 //窗口过程，内部使用
