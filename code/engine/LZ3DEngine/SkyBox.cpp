@@ -4,6 +4,7 @@
 
 #include "Res.h"
 #include "SkyBox.h"
+#include "RenderState.h"
 
 struct SkyVertex
 {
@@ -128,9 +129,8 @@ void cSkyBox::render(IDirect3DDevice9 *pDevice)
     {
         D3DXMatrixIdentity(&world);
     }
-    pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
-    pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
 
+    pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
     pDevice->SetSamplerState(0, D3DSAMP_MINFILTER, D3DTEXF_POINT);
     pDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, D3DTEXF_POINT);
 
@@ -144,6 +144,9 @@ void cSkyBox::render(IDirect3DDevice9 *pDevice)
         pDevice->SetTexture(0, getResMgr()->getTextureEx(name));
         pDevice->DrawPrimitive(D3DPT_TRIANGLESTRIP, i*4, 2);
     }
-    pDevice->SetRenderState(D3DRS_LIGHTING, TRUE);
+
+    pDevice->SetRenderState(D3DRS_LIGHTING, DefaultRS::LightingEnable);
+    pDevice->SetSamplerState(0, D3DSAMP_MINFILTER, DefaultRS::TextureMinFilter);
+    pDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, DefaultRS::TextureMagFilter);
     
 }

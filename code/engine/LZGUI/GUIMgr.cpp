@@ -1,5 +1,6 @@
 ﻿#include "GUIMgr.h"
 #include "../LZ3DEngine/App.h"
+#include "../LZ3DEngine/RenderState.h"
 
 //gui管理器
 
@@ -199,12 +200,8 @@ void GUIManagerBase::removeFilterMsg(UINT msg)
 void GUIManagerBase::render(IDirect3DDevice9 * pDevice)
 {
     pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
-    pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
-    pDevice->SetRenderState( D3DRS_SRCBLEND , D3DBLEND_SRCALPHA );
-    pDevice->SetRenderState( D3DRS_DESTBLEND , D3DBLEND_INVSRCALPHA);
     __super::render(pDevice);
-    pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
-    pDevice->SetRenderState(D3DRS_LIGHTING, TRUE);
+    pDevice->SetRenderState(D3DRS_LIGHTING, DefaultRS::LightingEnable);
 }
 
 /** 添加一个被跟踪者。用于标记当前正活动的控件，主要用于发出mouseLeave消息。*/

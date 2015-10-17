@@ -31,12 +31,12 @@ void CSceneFog::setFog(void)
     {
         return;
     }
-    assert(m_pDevice != NULL && "绘图设备不能为空");
+    assert(m_pDevice != NULL);
 
     DWORD flag = (DWORD)m_ftType;
     bool bPixel = ((flag & (DWORD)FT_PIXEL) != 0);
 
-    m_pDevice->SetRenderState(D3DRS_FOGENABLE, true);
+    m_pDevice->SetRenderState(D3DRS_FOGENABLE, TRUE);
     m_pDevice->SetRenderState(D3DRS_FOGCOLOR, m_crColor);
 
     if (bPixel)//像素雾化
@@ -78,7 +78,7 @@ void CSceneFog::setFog(void)
 
 void CSceneFog::closeFog(void)
 {
-    m_pDevice->SetRenderState(D3DRS_FOGENABLE, false);
+    m_pDevice->SetRenderState(D3DRS_FOGENABLE, FALSE);
 }
 
 void CSceneFog::setFogType(DWORD ft)

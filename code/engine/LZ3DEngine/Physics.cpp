@@ -7,6 +7,7 @@
 
 #include "Physics.h"
 #include "Collision.h"
+#include "RenderState.h"
 
 float g_maxDistToNpc = 300;
 bool g_drawCollision = false;
@@ -90,20 +91,12 @@ void iPhysics::render(IDirect3DDevice9 * pDevice)
 {
     if(isPlayers() && g_drawCollision)
     {
-        DWORD oldLight, oldAlph;
-        pDevice->GetRenderState(D3DRS_LIGHTING, &oldLight);
         pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
-
-        pDevice->GetRenderState(D3DRS_ALPHABLENDENABLE, &oldAlph);
-        pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
-        pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
-        pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 
         g_debugCP.drawDebug(pDevice);
         g_debugCP2.drawDebug(pDevice);
 
-        pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, oldAlph);
-        pDevice->SetRenderState(D3DRS_LIGHTING, oldLight);
+        pDevice->SetRenderState(D3DRS_LIGHTING, DefaultRS::LightingEnable);
     }
 }
 

@@ -4,9 +4,7 @@
 #include "CursorCamera.h"
 #include "Billboard.h"
 #include "App.h"
-
-
-
+#include "RenderState.h"
 
 struct BillboardVertex
 {
@@ -178,26 +176,12 @@ void cBillboard::render(IDirect3DDevice9 * pDevice)
     pDevice->SetTransform(D3DTS_WORLD, &mat);
 
     pDevice->SetRenderState( D3DRS_LIGHTING, FALSE);
-    pDevice->SetRenderState( D3DRS_ZENABLE, TRUE);
-    pDevice->SetRenderState( D3DRS_ALPHATESTENABLE, TRUE );
-    pDevice->SetRenderState( D3DRS_ALPHAREF, 0 );
-    pDevice->SetRenderState( D3DRS_ALPHAFUNC, D3DCMP_GREATER );
-
-    pDevice->SetSamplerState(0, D3DSAMP_MINFILTER, D3DTEXF_LINEAR);
-    pDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);
-
-    pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
-    pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
-    pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
-
+    
     updateVertex();
     pDevice->SetTexture(0, m_pTexture);
     pDevice->SetStreamSource(0, m_pVertex, 0, BillboardVertex::SIZE);
     pDevice->SetFVF(BillboardVertex::FVF);
     pDevice->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, 2);
 
-    pDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, FALSE );
-    pDevice->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
-    pDevice->SetRenderState(D3DRS_LIGHTING, TRUE);
-
+    pDevice->SetRenderState(D3DRS_LIGHTING, DefaultRS::LightingEnable);
 }

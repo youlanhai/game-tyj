@@ -310,25 +310,27 @@ void CGame::render()
 
         __super::render();
 
+        if (m_pFog)
+        {
+            m_pFog->setFog();
+        }
+
         //设置材质
         CMaterial::setMaterial(m_pd3dDevice,D3DXCOLOR(0.8f,0.8f,0.8f,1.0f));
 
         m_pSkyBox->render(m_pd3dDevice);
 
-        if (m_pFog)
-        {
-            m_pFog->setFog();
-        }
         //渲染地面
         cMap::instance()->render(m_pd3dDevice);
 		m_pRenderTaskMgr->render(m_pd3dDevice);
+
+        m_pBillboardMgr->render(m_pd3dDevice);
 
         if (m_pFog)
         {
             m_pFog->closeFog();
         }
 
-        m_pBillboardMgr->render(m_pd3dDevice);
         GUIManagerBase* pgui = getGUIMgr();
         if (pgui)
         {

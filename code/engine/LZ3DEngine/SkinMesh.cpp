@@ -5,6 +5,7 @@
 #include "SkinMesh.h"
 #include "Res.h"
 #include "Log.h"
+#include "RenderState.h"
 
 struct D3DXFRAME_DERIVED: public D3DXFRAME
 {
@@ -369,6 +370,7 @@ void cSkinMesh::render(IDirect3DDevice9* pDevice)
 	m_pd3dDevice->SetSamplerState( 0, D3DSAMP_ADDRESSV, D3DTADDRESS_WRAP );
 	m_pd3dDevice->SetRenderState( D3DRS_CULLMODE, D3DCULL_NONE );
 	DrawFrame(m_pFrameRoot);
+    m_pd3dDevice->SetRenderState( D3DRS_CULLMODE, DefaultRS::CullMode);
 }
 
 /** 克隆动画控制器。*/

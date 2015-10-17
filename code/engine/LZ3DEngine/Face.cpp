@@ -1,7 +1,7 @@
 ﻿#include "Commen.h"
 #include "Face.h"
 #include "Res.h"
-
+#include "RenderState.h"
 
 C2DFace::C2DFace(void)
 {
@@ -94,9 +94,6 @@ void ProgressBar::update(float elapse)
 void ProgressBar::render(LPDIRECT3DDEVICE9 pDevice) const
 {
     pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
-    pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
-    pDevice->SetRenderState( D3DRS_SRCBLEND , D3DBLEND_SRCALPHA );
-    pDevice->SetRenderState( D3DRS_DESTBLEND , D3DBLEND_INVSRCALPHA);
 
     {
         Lazy::VertexRHWColorUV vertexB[4] = {
@@ -143,8 +140,7 @@ void ProgressBar::render(LPDIRECT3DDEVICE9 pDevice) const
         pDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vertexF, Lazy::VertexRHWColorUV_SIZE);
     }
 
-    pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
-    pDevice->SetRenderState(D3DRS_LIGHTING, TRUE);
+    pDevice->SetRenderState(D3DRS_LIGHTING, DefaultRS::LightingEnable);
 }
 
 void ProgressBar::setForeImage(const std::string & image)

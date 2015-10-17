@@ -133,6 +133,7 @@
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="QuadTree.h" />
+    <ClInclude Include="RenderState.h" />
     <ClInclude Include="SkinMesh.h" />
     <ClInclude Include="App.h" />
     <ClInclude Include="Commen.h" />

@@ -1,6 +1,7 @@
 ﻿#include "Commen.h"
 #include "BoundingBox.h"
 #include "Utilities.h"
+#include "RenderState.h"
 
 const float INFINITY = FLT_MAX;
 
@@ -95,7 +96,7 @@ void CBoundingBox::render(IDirect3DDevice9 *pDevice,D3DXMATRIX * pMat)
 
     m_pMeshBox->DrawSubset(0);
 
-    pDevice->SetRenderState(D3DRS_FILLMODE,D3DFILL_SOLID);
+    pDevice->SetRenderState(D3DRS_FILLMODE, DefaultRS::FillMode);
 }
 
 ///点是否在包围盒中

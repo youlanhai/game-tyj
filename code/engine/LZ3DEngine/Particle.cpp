@@ -4,6 +4,7 @@
 #include "Particle.h"
 
 #include "App.h"
+#include "RenderState.h"
 
 DWORD ParticleVertex::FVF = D3DFVF_XYZ|D3DFVF_DIFFUSE;
 DWORD ParticleVertex::SIZE = sizeof(ParticleVertex);
@@ -44,15 +45,11 @@ cParticleSystem::~cParticleSystem(void)
 
 void cParticleSystem::setRenderState(IDirect3DDevice9 *pDevice)
 {
-    pDevice->SetRenderState(D3DRS_LIGHTING, false);
+    pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
     pDevice->SetRenderState(D3DRS_ZENABLE, FALSE);
-    pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
 
-    pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
-    pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
-
-    pDevice->SetRenderState(D3DRS_POINTSPRITEENABLE, true);
-    pDevice->SetRenderState(D3DRS_POINTSCALEENABLE, true);
+    pDevice->SetRenderState(D3DRS_POINTSPRITEENABLE, TRUE);
+    pDevice->SetRenderState(D3DRS_POINTSCALEENABLE, TRUE);
     pDevice->SetRenderState(D3DRS_POINTSIZE, floatToDWORD(m_Size));
     pDevice->SetRenderState(D3DRS_POINTSIZE_MIN, floatToDWORD(0.0f));
     pDevice->SetRenderState(D3DRS_POINTSCALE_A, floatToDWORD(0.0f));
@@ -66,12 +63,11 @@ void cParticleSystem::setRenderState(IDirect3DDevice9 *pDevice)
 
 void cParticleSystem::recoverRenderState(IDirect3DDevice9 *pDevice)
 {
-    pDevice->SetRenderState(D3DRS_POINTSPRITEENABLE, false);
-    pDevice->SetRenderState(D3DRS_POINTSCALEENABLE, false);
+    pDevice->SetRenderState(D3DRS_POINTSPRITEENABLE, FALSE);
+    pDevice->SetRenderState(D3DRS_POINTSCALEENABLE, FALSE);
 
-    pDevice->SetRenderState(D3DRS_LIGHTING, true);
-    pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, false);
-    pDevice->SetRenderState(D3DRS_ZENABLE, TRUE);
+    pDevice->SetRenderState(D3DRS_LIGHTING, DefaultRS::LightingEnable);
+    pDevice->SetRenderState(D3DRS_ZENABLE, DefaultRS::ZEnable);
 }
 
 void cParticleSystem::addParticle()

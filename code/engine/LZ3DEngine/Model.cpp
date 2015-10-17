@@ -2,6 +2,7 @@
 #include "Model.h"
 #include "Res.h"
 #include "Utilities.h"
+#include "RenderState.h"
 
 MeshHolder iModel::s_pMeshSphere;
 
@@ -68,17 +69,13 @@ void iModel::renderBoundingBox(IDirect3DDevice9 * pDevice)
     pDevice->SetTransform(D3DTS_WORLD, &mat);
     pDevice->SetTexture(0, NULL);
 
-    DWORD oldFill, oldLight;
-    pDevice->GetRenderState(D3DRS_LIGHTING, &oldLight);
     pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
-
-    pDevice->GetRenderState( D3DRS_FILLMODE, &oldFill );
-    pDevice->SetRenderState( D3DRS_FILLMODE, D3DFILL_WIREFRAME );
+    pDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME );
 
     s_pMeshSphere.getMesh()->DrawSubset(0);
 
-    pDevice->SetRenderState( D3DRS_FILLMODE, oldFill );
-    pDevice->SetRenderState(D3DRS_LIGHTING, oldLight);
+    pDevice->SetRenderState(D3DRS_FILLMODE, DefaultRS::FillMode);
+    pDevice->SetRenderState(D3DRS_LIGHTING, DefaultRS::LightingEnable);
 }
 
 

@@ -4,7 +4,7 @@
 #include "Mesh.h"
 #include <fstream>
 #include "Res.h"
-
+#include "RenderState.h"
 
 ///构造函数
 cResMesh::cResMesh()
@@ -123,19 +123,10 @@ void cResMesh::render(IDirect3DDevice9 * pDevice)
 {
     if (m_pMesh == NULL) return ;
 
-    pDevice->SetRenderState(D3DRS_LIGHTING, TRUE);
     pDevice->SetSamplerState(0, D3DSAMP_ADDRESSU, D3DTADDRESS_MIRROR );
     pDevice->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_MIRROR );
-    pDevice->SetSamplerState(0, D3DSAMP_MINFILTER, D3DTEXF_LINEAR);
-    pDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);
 
-    pDevice->SetRenderState( D3DRS_ALPHATESTENABLE, TRUE );
     pDevice->SetRenderState( D3DRS_ALPHAREF, 10);
-    pDevice->SetRenderState( D3DRS_ALPHAFUNC, D3DCMP_GREATEREQUAL );
-
-    pDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, TRUE );
-    pDevice->SetRenderState( D3DRS_SRCBLEND, D3DBLEND_SRCALPHA );
-    pDevice->SetRenderState( D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA );
 
     pDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_SELECTARG1); 
     pDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
@@ -151,8 +142,7 @@ void cResMesh::render(IDirect3DDevice9 * pDevice)
         m_pMesh->DrawSubset(i);//绘制
     }
 
-    pDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, FALSE );
-    pDevice->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
+    pDevice->SetRenderState(D3DRS_ALPHAREF, DefaultRS::AlphaRef);
 }
 
 

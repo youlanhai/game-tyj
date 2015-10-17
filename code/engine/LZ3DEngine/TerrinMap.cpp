@@ -9,6 +9,7 @@
 #include "Utilities.h"
 #include "../Physics/Physics.h"
 #include "Material.h"
+#include "RenderState.h"
 
 using namespace Lazy;
 
@@ -348,19 +349,8 @@ void cMap::render(IDirect3DDevice9* pDevice)
         return ;
     }
 
-    pDevice->SetRenderState(D3DRS_LIGHTING, TRUE);
-    pDevice->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
-    pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE );
-    pDevice->SetRenderState(D3DRS_SHADEMODE, D3DSHADE_GOURAUD);
-
-    pDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);
-    pDevice->SetSamplerState(0, D3DSAMP_MINFILTER, D3DTEXF_LINEAR);
     pDevice->SetSamplerState(0, D3DSAMP_ADDRESSU, D3DTADDRESS_MIRROR);
     pDevice->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_MIRROR);
-
-    pDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
-    pDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
-    pDevice->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
 
     CMaterial::setMaterial(pDevice, 
         D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f),
@@ -376,10 +366,10 @@ void cMap::render(IDirect3DDevice9* pDevice)
     {
         m_renderNodes[i]->render(pDevice);
     }
-    pDevice->SetRenderState(D3DRS_SPECULARENABLE, FALSE);
 
-    pDevice->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
-    pDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, TRUE );
+    pDevice->SetRenderState(D3DRS_SPECULARENABLE, DefaultRS::SpecularEnable);
+    pDevice->SetSamplerState(0, D3DSAMP_ADDRESSU, DefaultRS::TextureAdressU);
+    pDevice->SetSamplerState(0, D3DSAMP_ADDRESSV, DefaultRS::TextureAdressV);
 
     //绘制地图物体
     for (size_t i=0; i<m_renderNodes.size(); ++i)

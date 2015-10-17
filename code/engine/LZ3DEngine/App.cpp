@@ -5,6 +5,7 @@
 #include "../Font/Font.h"
 #include "TerrinMap.h"
 #include "Sound.h"
+#include "RenderState.h"
 
 #pragma comment(lib,"d3d9.lib")
 #pragma comment(lib,"d3dx9.lib")
@@ -270,11 +271,36 @@ bool CApp::createDevice()
         return false;
     }
 
-    m_pd3dDevice->SetRenderState(D3DRS_CULLMODE,D3DCULL_NONE);
-    m_pd3dDevice->SetRenderState(D3DRS_ZENABLE,TRUE);
+    //设置默认的渲染状态。如果程序修改了某个值，用完之后需要改过来。
 
     //设置部分环境光
-    m_pd3dDevice->SetRenderState(D3DRS_AMBIENT,D3DCOLOR_XRGB(100,100,100));
+    m_pd3dDevice->SetRenderState(D3DRS_LIGHTING, DefaultRS::LightingEnable);
+    m_pd3dDevice->SetRenderState(D3DRS_SPECULARENABLE, DefaultRS::SpecularEnable);
+    m_pd3dDevice->SetRenderState(D3DRS_AMBIENT, D3DCOLOR_XRGB(100,100,100));
+
+    m_pd3dDevice->SetRenderState(D3DRS_ZENABLE, DefaultRS::ZEnable);
+    m_pd3dDevice->SetRenderState(D3DRS_CULLMODE, DefaultRS::CullMode);
+
+    m_pd3dDevice->SetRenderState(D3DRS_ALPHATESTENABLE, DefaultRS::AlphaTestEnable);
+    m_pd3dDevice->SetRenderState(D3DRS_ALPHAREF, DefaultRS::AlphaRef);
+    m_pd3dDevice->SetRenderState(D3DRS_ALPHAFUNC, DefaultRS::AlphaFunc);
+
+    m_pd3dDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, DefaultRS::AlphaBlendEnable);
+    m_pd3dDevice->SetRenderState(D3DRS_SRCBLEND, DefaultRS::SrcBlend);
+    m_pd3dDevice->SetRenderState(D3DRS_DESTBLEND, DefaultRS::DstBlend);
+
+    m_pd3dDevice->SetRenderState(D3DRS_SHADEMODE, DefaultRS::ShadeMode);
+
+
+    m_pd3dDevice->SetSamplerState(0, D3DSAMP_MINFILTER, DefaultRS::TextureMinFilter);
+    m_pd3dDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, DefaultRS::TextureMagFilter);
+    m_pd3dDevice->SetSamplerState(0, D3DSAMP_ADDRESSU, DefaultRS::TextureAdressU);
+    m_pd3dDevice->SetSamplerState(0, D3DSAMP_ADDRESSV, DefaultRS::TextureAdressV);
+
+    m_pd3dDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
+    m_pd3dDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+    m_pd3dDevice->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
+    
     return true;
 }
 

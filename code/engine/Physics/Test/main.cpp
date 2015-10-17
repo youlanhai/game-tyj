@@ -103,8 +103,6 @@ HRESULT InitD3D( HWND hWnd )
     g_pCamera = new CCursorCamera(g_hWnd, g_pd3dDevice);
     g_pCamera->setSpeed(1000.0f);
 
-    g_pd3dDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
-
 	//设置观察矩阵和投影矩阵
 	SetViewAndProjMatrix();
 
