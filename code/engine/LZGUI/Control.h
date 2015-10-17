@@ -1,27 +1,11 @@
 ﻿#pragma once
 
-//#define LZ3DENGINE_STATIC_LINK
+# define LZGUI_API
 
-#include "..\LZ3DEngine\Base.h"
-#include "..\LZ3DEngine\LZ3DEngine.h"
-
-
-#ifdef LZ3DENGINE_STATIC_LINK
-#   define LZGUI_API
-#else
-#   ifdef LZGUI_EXPORTS
-#       define LZGUI_API __declspec(dllexport)
-#   else
-#       define LZGUI_API __declspec(dllimport)
-#   endif
-#   ifdef _DEBUG
-#       pragma comment(lib, "LZ3DEngine_d")
-#   else
-#       pragma comment(lib, "LZ3DEngine")
-#   endif
-#endif
-
-
+#include "../LZ3DEngine/Commen.h"
+#include "../LZ3DEngine/RenderObj.h"
+#include "../utility/UtilConfig.h"
+#include "../utility/VisitPool.h"
 
 #include <vector>
 #include <list>
@@ -318,32 +302,26 @@ protected:
 
 //////////////////////////////////////////////////////////////////////////
 
-struct VisitControl : public VisitPool<IControl>
+struct VisitControl : public Lazy::VisitPool<IControl*>
 {
     void update(float elapse)
     {
-        lock(true);
-        for (VisitRIterator it=rbegin(); it!=rend(); ++it)
+        lock();
+        for (reverse_iterator it=rbegin(); it!=rend(); ++it)
         {
-            if (it->canOperate())
-            {
-                (it->obj())->update(elapse);
-            }
+            (*it)->update(elapse);
         }
-        lock(false);
-        removeDead();
+        unlock();
+        refreshState();
     }
     void render(IDirect3DDevice9* pDevice)
     {
-        lock(true);
-        for (VisitIterator it=begin(); it!=end(); ++it)
+        lock();
+        for (iterator it=begin(); it!=end(); ++it)
         {
-            if (it->canOperate())
-            {
-                (it->obj())->render(pDevice);
-            }
+            (*it)->render(pDevice);
         }
-        lock(false);
+        unlock();
     }
 };
 

@@ -4,6 +4,7 @@
 
 #include "RenderObj.h"
 
+#include <map>
 
 /** 可绘制资源接口*/
 class IRenderRes : public IBase, public IRenderObj

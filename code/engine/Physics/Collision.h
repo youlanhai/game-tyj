@@ -2,7 +2,7 @@
 
 #include <vector>
 #include "PhysicsConfig.h"
-#include "../utility/SmartPtr.h"
+#include "../utility/RefPtr.h"
 #include "math3d.h"
 
 namespace Physics

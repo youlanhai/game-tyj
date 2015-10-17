@@ -1,4 +1,4 @@
-﻿//SmartPtr.h 智能指针
+﻿//RefPtr.h 智能指针
 // author: 游蓝海  
 // blog: http://blog.csdn.net/you_lan_hai
 
@@ -7,15 +7,17 @@
 
 #include <cassert>
 
-namespace Lazy
-{
-
 /** 引用计数类*/
 class  IBase
 {
 public:
-    IBase(void) : m_nRefCounter(0) { };
-    virtual ~IBase(void) { }
+    IBase(void) 
+        : m_nRefCounter(0)
+        , m_managed(true)
+    {}
+
+    virtual ~IBase(void)
+    {}
 
     /** 增加引用计数*/
     void  addRef(void) { ++m_nRefCounter; }
@@ -24,7 +26,7 @@ public:
     void  delRef(void)
     {
         --m_nRefCounter;
-        if (m_nRefCounter <= 0) 
+        if (m_nRefCounter <= 0 && m_managed) 
         {
             destroyThis();
         }
@@ -37,8 +39,12 @@ public:
 
     virtual void destroyThis(void){ delete this; }
 
+    bool getManaged() const { return m_managed; }
+    void setManaged(bool managed) { m_managed = managed; }
+
 private:
-    int     m_nRefCounter;//引用计数
+    int     m_nRefCounter;  //引用计数
+    bool    m_managed;      //自动管理资源
 };
 
 /** 智能指针*/
@@ -162,7 +168,5 @@ bool operator < (const RefPtr<T>& a, const RefPtr<U>& b){ return (a.get() < b.ge
 
 template<typename T, typename U>
 bool operator > (const RefPtr<T>& a, const RefPtr<U>& b){ return (a.get() > b.get()); }
-
-}//namespace Lazy
 
 #endif //LAZY3D_SMARTPTR_H

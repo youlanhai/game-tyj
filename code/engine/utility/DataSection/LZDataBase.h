@@ -41,7 +41,7 @@ namespace LZDataType
 
 typedef RefPtr<class LZDataBase> LZDataPtr;
 
-class LZDATA_API LZDataBase : public StringConvTool, public IBase
+class LZDATA_API LZDataBase : public IBase, public StringConvTool
 {
 protected:
     LZDataBase(void);
@@ -80,6 +80,7 @@ public://对子孙节点的操作
     IMP_READ_FUN(Float, float, 0.0f);
     IMP_READ_FUN(Double, double, 0.0);
     IMP_READ_FUN(String, const tstring&, EmptyStr);
+    IMP_READ_FUN(Utf8, std::string, "");
 
     IMP_WRITE_FUN(Int, int);
     IMP_WRITE_FUN(Uint, size_t);
@@ -88,6 +89,7 @@ public://对子孙节点的操作
     IMP_WRITE_FUN(Float, float);
     IMP_WRITE_FUN(Double, double);
     IMP_WRITE_FUN(String, const tstring&);
+    IMP_WRITE_FUN(Utf8, std::string);
 
 public://接口
 

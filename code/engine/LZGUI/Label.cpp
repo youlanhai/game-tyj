@@ -2,6 +2,9 @@
 #include "Label.h"
 #include "GUIMgr.h"
 
+#include "../utility/Misc.h"
+#include "../LZ3DEngine/Res.h"
+
 CLabel::CLabel(void)
 {
 }

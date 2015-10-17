@@ -5,9 +5,11 @@
 #pragma
 
 #include "Collision.h"
-#include "..\LZData\lzdheader.h"
-#include "..\utility\Utility.h"
-#include "..\utility\DataStream.h"
+#include "../utility/DataSection/DataSection.h"
+#include "../utility/Utility.h"
+#include "../utility/DataStream.h"
+
+using namespace Lazy;
 
 namespace Physics
 {
@@ -126,7 +128,7 @@ namespace Physics
 
         void setRoot(AVLBspNodePtr ptr);
 
-        void testSave(const std::string & fname);
+        void testSave(const Lazy::tstring & fname);
     };
 
     class AVLBspNode : public BspNode

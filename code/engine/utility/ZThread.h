@@ -9,7 +9,7 @@
 #pragma once
 
 #include "UtilConfig.h"
-#include "SmartPtr.h"
+#include "RefPtr.h"
 #include "ZLock.h"
 
 namespace Lazy

@@ -1,8 +1,10 @@
 ﻿
 #include "stdafx.h"
 #include "Header.h"
-#include "..\LZData\lzdheader.h"
+#include "../utility/DataSection/DataSection.h"
 #include "WrapperDataLoader.h"
+
+using namespace Lazy;
 
 const std::string & testG(const std::string & t)
 {
@@ -11,7 +13,10 @@ const std::string & testG(const std::string & t)
 
 void wrapperDataLoader()
 {
+#if 0
     def("testG", testG, return_internal_reference<>());
+
+    typedef LZDataBase LZData;
 
     class_<LZData, LZDataPtr, boost::noncopyable>("LZDataPtr", no_init)
         .def("setTag", &LZData::setTag)
@@ -41,5 +46,5 @@ void wrapperDataLoader()
         ;
 
     def("createLzdFromFile", createLzdFromFile);
-    def("createLzdFromBuffer", createLzdFromBuffer);
+#endif
 }

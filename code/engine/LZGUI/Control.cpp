@@ -3,7 +3,8 @@
 #include "Form.h"
 #include "GUIMgr.h"
 
-
+#include "../LZ3DEngine/App.h"
+#include "../LZ3DEngine/Utilities.h"
 
 //////////////////////////////////////////////////////////////////////////
 

@@ -1,6 +1,6 @@
 ﻿
 #include "Commen.h"
-#include "LZData.h"
+#include "../utility/DataSection/DataSection.h"
 #include "Pick.h"
 #include "Res.h"
 #include "Entity.h"
@@ -9,6 +9,8 @@
 #include "Utilities.h"
 #include "../Physics/Physics.h"
 #include "Material.h"
+
+using namespace Lazy;
 
 /**
  *  使用四叉树管理子地图（chunk）。可以很方便查找出位于矩形范围内的chunk。
@@ -105,27 +107,29 @@ bool cMap::loadMap(std::string mapName)
 
     m_mapName = mapName;
 
-    LZDataPtr ptr = createLzdFromFile(LZD_LZD, mapName);
+    LZDataPtr ptr = Lzd::createFromFile(charToWChar(mapName));
     if (!ptr)
     {
         XWRITE_LOGA("ERROR: mapp '%s' doesn't exist!", mapName.c_str());
         return false;
     }
 
+    std::string heightMapFile = ptr->readUtf8(_T("mapName"));
+
     if (!m_pTData->loadHeightMap(
-        ptr->readString("mapName"), 
-        ptr->readInt("vrows"), 
-        ptr->readInt("vcols"),
-        ptr->readFloat("squareSize"),
-        ptr->readFloat("heightScale"),
-        ptr->readBool("useOneTex")))
+        heightMapFile, 
+        ptr->readInt(_T("vrows")), 
+        ptr->readInt(_T("vcols")),
+        ptr->readFloat(_T("squareSize")),
+        ptr->readFloat(_T("heightScale")),
+        ptr->readBool(_T("useOneTex"))))
     {
         XWRITE_LOGA("ERROR: load the height data failed!");
         return false;
     }
 
 
-    m_objOnGround = ptr->readBool("onGround", true);
+    m_objOnGround = ptr->readBool(_T("onGround"), true);
     m_nodeSize = m_pTData->squareSize() * TerrainConfig::MaxMapNodeGrid;
     m_nodeR = (int)ceil(m_pTData->height()/(float)m_nodeSize);
     m_nodeC = (int)ceil(m_pTData->width()/(float)m_nodeSize);
@@ -133,7 +137,7 @@ bool cMap::loadMap(std::string mapName)
     debugMessage(_T("INFO: map rows=%d, cols=%d, node size=%f"), 
         m_nodeR, m_nodeC, m_nodeSize);
 
-    m_textureName = ptr->readString("texture");
+    m_textureName = ptr->readUtf8(_T("texture"));
 
     createNode();
 
@@ -141,13 +145,13 @@ bool cMap::loadMap(std::string mapName)
     
     if(!useChunkData)
     {
-        std::string name = ptr->readString("resource");
+        std::string name = ptr->readUtf8(_T("resource"));
         if(!cTerrainRes::instance()->load(name))
         {
             XWRITE_LOGA("WARNING: load res config file '%s' failed!", name.c_str());
         }
 
-        name = ptr->readString("object");
+        name = ptr->readUtf8(_T("object"));
         if(!loadObj(name))
         {
             XWRITE_LOGA("WARNING: load obj config file '%s' failed!", name.c_str());

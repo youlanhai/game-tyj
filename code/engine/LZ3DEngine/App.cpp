@@ -1,12 +1,15 @@
 ﻿//D3DApp.cpp
 
-#include "Commen.h"
-#include "LZ3DEngine.h"
-//#include "LZData.h"
 #include "App.h"
-
 #include "Device.h"
-#include "..\Font\Font.h"
+#include "../Font/Font.h"
+#include "TerrinMap.h"
+#include "Sound.h"
+
+#pragma comment(lib,"d3d9.lib")
+#pragma comment(lib,"d3dx9.lib")
+#pragma comment(lib,"winmm.lib")
+
 
 #define CLASS_NAME _T("LZ3DEnginex")
 

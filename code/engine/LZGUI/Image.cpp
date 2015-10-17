@@ -1,6 +1,6 @@
 ﻿#include "Image.h"
 #include "GUIMgr.h"
-
+#include "../LZ3DEngine/Res.h"
 
 CImage::CImage()
 {

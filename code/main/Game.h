@@ -1,11 +1,15 @@
 ﻿//Game.h
 #pragma once
 
-#include "..\LZ3DEngine\LZ3DEngine.h"
-#include "..\LZ3DEngine\Face.h"
-#include "..\LZData\lzdheader.h"
-#include "..\LZGUI\LZGUI.h"
-#include "PyScript.h"
+#include <Windows.h>
+#include "../engine/LZ3DEngine/App.h"
+
+class C2DFace;
+class ProgressBar;
+class cPyScript;
+class CCursorCamera;
+class cFpsRender;
+class CSceneFog;
 
 //游戏类
 class CGame :public CApp

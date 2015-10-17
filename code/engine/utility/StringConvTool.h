@@ -41,6 +41,7 @@ namespace Lazy
         double asDouble() const;
         LPCTSTR asText() const{return m_value.c_str();}
         const tstring & asString() const{ return m_value; }
+        std::string asUtf8() const;
 
         void setInt(int data);
         void setUint(size_t data);
@@ -50,6 +51,7 @@ namespace Lazy
         void setDouble(double data);
         inline void setText(LPCTSTR data){ m_value = data; }
         inline void setString(const tstring& data){m_value = data;}
+        void setUtf8(const std::string & data);
 
         bool formatFrom(LPCTSTR pFormat, ...);
         bool formatTo(LPCTSTR pFormat, ...);

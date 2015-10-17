@@ -1,4 +1,7 @@
 ﻿//Comment.h
+#ifndef LZ3DENGINE_COMMON_H
+#define LZ3DENGINE_COMMON_H
+
 #pragma once
 
 #include <windows.h>
@@ -16,9 +19,6 @@
 #include <map>
 #include <algorithm>
 #include <typeinfo>
-#pragma comment(lib,"d3d9.lib")
-#pragma comment(lib,"d3dx9.lib")
-#pragma comment(lib,"winmm.lib")
 
 #define SafeRelease(pObject) if(pObject != NULL){pObject->Release(); pObject = NULL;}
 #define SafeDelete(pObject) if(pObject != NULL){delete pObject; pObject = NULL;}
@@ -38,6 +38,6 @@
 #include "Tools2d.h"
 
 class CApp;
-
-/** 获得游戏类指针。*/
 LZDLL_API CApp*  getApp(void);
+
+#endif //LZ3DENGINE_COMMON_H

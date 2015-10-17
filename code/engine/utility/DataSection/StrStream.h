@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "../UtilConfig.h"
-#include "../SmartPtr.h"
+#include "../RefPtr.h"
 
 namespace Lazy
 {

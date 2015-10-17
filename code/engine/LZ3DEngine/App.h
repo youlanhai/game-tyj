@@ -1,7 +1,7 @@
 ﻿//App.h
 #pragma once
 
-#include "Base.h"
+#include "Commen.h"
 
 #include "CallBack.h"
 
@@ -15,7 +15,6 @@
 
 #include "Texture.h"
 #include "TextTexture.h"
-
 
 namespace LoadingType
 {

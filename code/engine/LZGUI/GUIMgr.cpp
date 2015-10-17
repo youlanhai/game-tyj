@@ -1,4 +1,5 @@
 ﻿#include "GUIMgr.h"
+#include "../LZ3DEngine/App.h"
 
 //gui管理器
 

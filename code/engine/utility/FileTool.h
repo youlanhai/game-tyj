@@ -9,7 +9,7 @@
 #ifndef LAZY_UTILITY_FILETOOL_H
 #define LAZY_UTILITY_FILETOOL_H
 
-#include "SmartPtr.h"
+#include "RefPtr.h"
 
 namespace Lazy
 {

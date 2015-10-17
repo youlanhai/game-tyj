@@ -3,9 +3,9 @@
 struct PredIfIDEqual
 {
     PredIfIDEqual(int id) : m_id(id) { }
-    bool operator()(VisitControl::VisitNode pc)
+    bool operator()(PControl pc)
     {
-        return ((PControl)(pc.obj()))->getID() == m_id;
+        return pc->getID() == m_id;
     }
 private:
     int m_id;
@@ -70,16 +70,12 @@ UINT CPanel::messageProc(UINT msg, WPARAM wParam, LPARAM lParam)
     int returnCode = 0;
     CPoint ptLocal(lParam);
 
-    m_childrenEx.lock(true);
-    for (VisitControl::VisitRIterator it = m_childrenEx.rbegin(); 
+    m_childrenEx.lock();
+    for (VisitControl::reverse_iterator it = m_childrenEx.rbegin(); 
         it!=m_childrenEx.rend(); 
         ++it)
     {
-        if (!it->canOperate())
-        {
-            continue ;
-        }
-        PControl pCtrl = it->obj();
+        PControl pCtrl = *it;
         CPoint pt = pCtrl->parentToLocal(ptLocal);
         UINT result = pCtrl->preProcessMsg(msg, wParam, pt.toLParam());
         if(result == PRE_MSG_OK)
@@ -96,7 +92,7 @@ UINT CPanel::messageProc(UINT msg, WPARAM wParam, LPARAM lParam)
             break;
         }
     }
-    m_childrenEx.lock(false);
+    m_childrenEx.unlock();
     if (returnCode == 0 && canHandleSelfMsg())
     {
         return __super::messageProc(msg, wParam, ptLocal.toLParam());
@@ -117,10 +113,10 @@ void CPanel::addChild(PControl pCtrl)
 
 PControl CPanel::getChild( int id )
 {
-    VisitControl::VisitIterator it = m_childrenEx.find_if(PredIfIDEqual(id));
+    VisitControl::iterator it = m_childrenEx.find_if(PredIfIDEqual(id));
     if (it != m_childrenEx.end())
     {
-        return (PControl)(it->obj());
+        return *it;
     }
     return NULL;
 }
@@ -138,8 +134,8 @@ void CPanel::removeChild(PControl pCtrl)
 
 bool CPanel::isChildActive(PControl ctrl)
 {
-    VisitControl::VisitRIterator it = m_childrenEx.rbegin();
-    if (it->obj() == ctrl)
+    VisitControl::reverse_iterator it = m_childrenEx.rbegin();
+    if (*it == ctrl)
     {
         return true;
     }
@@ -152,15 +148,10 @@ bool CPanel::isChildActive(PControl ctrl)
 ///清除子控件
 void CPanel::clearChildren()
 {
-    for (VisitControl::VisitIterator it = m_childrenEx.begin(); 
-        it != m_childrenEx.end(); 
-        ++it)
+    for (VisitControl::iterator it = m_childrenEx.begin(); 
+        it != m_childrenEx.end(); ++it)
     {
-        if (it->canOperate())
-        {
-            PControl ctl = it->obj();
-            ctl->setParent(NULL);
-        }
+        (*it)->setParent(NULL);
     }
     m_childrenEx.clear();
 }

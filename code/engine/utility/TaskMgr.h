@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "SmartPtr.h"
+#include "RefPtr.h"
 #include "ZLock.h"
 
 namespace Lazy

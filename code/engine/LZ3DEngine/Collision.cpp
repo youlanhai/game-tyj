@@ -5,7 +5,6 @@
 #include "TerrinMap.h"
 #include "Mesh.h"
 #include "ImpModel.h"
-#include "lzdheader.h"
 
 
 //////////////////////////////////////////////////////////////////////////

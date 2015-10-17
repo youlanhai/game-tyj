@@ -3,6 +3,8 @@
 #include "Base.h"
 #include "RenderObj.h"
 
+#include <list>
+
 class cCallBackPool;
 LZDLL_API cCallBackPool* getCallBackPool();
 //////////////////////////////////////////////////////////////////////////

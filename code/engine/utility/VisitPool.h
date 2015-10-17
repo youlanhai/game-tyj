@@ -2,7 +2,7 @@
 
 #include <list>
 
-#include "SmartPtr.h"
+#include "RefPtr.h"
 
 namespace Lazy
 {

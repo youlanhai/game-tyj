@@ -2,15 +2,21 @@
 #include "Game.h"
 #include "resource.h"
 
-#include <Python.h>
+//#include <Python.h>
+#include "PyScript.h"
 
-#include "../LZ3DEngine/Log.h"
-#include "../utility/LoadingMgr.h"
-#include "../LZData/lzdheader.h"
-#include "../Font/Font.h"
+#include "../engine/LZ3DEngine/LZ3DEngine.h"
+#include "../engine/LZ3DEngine/Face.h"
+
+#include "../engine/utility/LoadingMgr.h"
+#include "../engine/Font/Font.h"
+#include "../engine/utility/DataSection/DataSection.h"
+#include "../engine/LZGUI/LZGUI.h"
+
+using namespace Lazy;
 
 #define ICON_FILE   L"res/gui/tyj.ico"
-#define GAME_CONFIG "gameconfig.lzd"
+#define GAME_CONFIG _T("gameconfig.lzd")
 #define CURSOR_FILE "res/cursor/cur.ani"
 #define FONT_FILE "res/font/STSONG.TTF"
 #define LOADING_IMAGE "res/gui/door.jpg"
@@ -29,7 +35,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE, LPSTR, int)
     LZUtility::ChangeCurDirectory();
     INIT_LOG(_T("MyGame.log"));
 
-    LZDataPtr root = createLzdFromFile(LZD_LZD, GAME_CONFIG);
+    LZDataPtr root = Lzd::createFromFile(GAME_CONFIG);
     if (!root)
     {
         XWRITE_LOGA("ERROR: Load Game config file '%s' failed!", GAME_CONFIG);
@@ -37,10 +43,10 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE, LPSTR, int)
     }
 
     if(g_game.create(hInstance, 
-        root->readString("app/name").c_str(),
-        root->readInt("app/width", 800),
-        root->readInt("app/height", 600),
-        root->readBool("app/fullscr", false)))
+        root->readUtf8(_T("app/name")).c_str(),
+        root->readInt(_T("app/width"), 800),
+        root->readInt(_T("app/height"), 600),
+        root->readBool(_T("app/fullscr"), false)))
     {
         g_game.mainLoop();
     }

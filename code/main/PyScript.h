@@ -1,8 +1,10 @@
 ﻿#pragma once
 
-#include "..\LZ3DEngine\Base.h"
+#include "LZ3DEngine\Base.h"
 
 #include <boost/python.hpp>
+
+class CSceneFog;
 
 class cPyScript : public IBase
 {

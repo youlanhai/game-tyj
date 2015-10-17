@@ -50,6 +50,14 @@ double StringConvTool::asDouble() const
 	return _tstof(m_value.c_str());;
 }
 
+std::string StringConvTool::asUtf8() const
+{
+#ifdef _UNICODE
+    return Lazy::wcharToChar(m_value, Lazy::CP::utf8);
+#else
+    return m_value;
+#endif
+}
 
 void StringConvTool::setInt(int data)
 {
@@ -86,6 +94,15 @@ void StringConvTool::setFloat(float data)
 void StringConvTool::setDouble(double data)
 {
 	formatFrom(_T("%lf"), data);
+}
+
+void StringConvTool::setUtf8(const std::string & data)
+{
+#ifdef _UNICODE
+    m_value = Lazy::charToWChar(data, Lazy::CP::utf8);
+#else
+    m_value = data;
+#endif
 }
 
 bool StringConvTool::formatFrom(LPCTSTR pFormat, ...)

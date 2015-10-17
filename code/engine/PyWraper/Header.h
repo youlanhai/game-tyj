@@ -35,7 +35,7 @@ using namespace boost::python;
     rtType default_##name(aType1 a1, aType2 a2, aType3 a3){ rt T::##name(a1, a2, a3); }
 
 
-#include "..\LZ3DEngine\RefPtr.h"
+#include "../utility/RefPtr.h"
 
 namespace boost
 {

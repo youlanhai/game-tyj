@@ -7,7 +7,7 @@
 #include <string>
 
 #define ENTITIES_PATH "res\\entities"
-#define PYTHON_HOME "..\\code\\engine\\third_part\\python"
+#define PYTHON_HOME "..\\code\\third_part\\python"
 
 using namespace boost::python;
 

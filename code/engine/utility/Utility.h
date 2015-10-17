@@ -2,7 +2,7 @@
 #define LAZY_UTILITY_H
 
 #include "UtilConfig.h"
-#include "SmartPtr.h"
+#include "RefPtr.h"
 
 #include "DataSection/DataSection.h"
 #include "DataStream.h"

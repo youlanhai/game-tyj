@@ -502,7 +502,7 @@ namespace Physics
         }
     }
 
-    void AVLBspTree::testSave(const std::string & fname)
+    void AVLBspTree::testSave(const Lazy::tstring & fname)
     {
         LZDataPtr xmlRoot = new xml();
         if (!xmlRoot || !m_root)
@@ -657,8 +657,8 @@ namespace Physics
 
     void AVLBspNode::testSave(LZDataPtr xmlRoot)
     {
-        char buffer[64];
-        sprintf_s(buffer, 64, "0x%d[%d]", (DWORD)this, m_balence);
+        tchar buffer[128];
+        wsprintf(buffer, _T("0x%d[%d]"), (DWORD)this, m_balence);
         LZDataPtr root = xmlRoot->write(buffer);
 
         if (m_front)

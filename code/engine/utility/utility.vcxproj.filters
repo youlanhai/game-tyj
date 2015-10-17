@@ -78,13 +78,13 @@
     <ClCompile Include="DataSection\lzdParser.cpp">
       <Filter>DataSection</Filter>
     </ClCompile>
+    <ClCompile Include="DataSection\StrStream.cpp">
+      <Filter>DataSection</Filter>
+    </ClCompile>
     <ClCompile Include="DataSection\xml.cpp">
       <Filter>DataSection</Filter>
     </ClCompile>
     <ClCompile Include="DataSection\xmlParser.cpp">
-      <Filter>DataSection</Filter>
-    </ClCompile>
-    <ClCompile Include="DataSection\StrStream.cpp">
       <Filter>DataSection</Filter>
     </ClCompile>
   </ItemGroup>
@@ -146,6 +146,9 @@
     <ClInclude Include="DataStream.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="RefPtr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="DataSection\DataSection.h">
       <Filter>DataSection</Filter>
     </ClInclude>
@@ -164,17 +167,14 @@
     <ClInclude Include="DataSection\lzdParser.h">
       <Filter>DataSection</Filter>
     </ClInclude>
+    <ClInclude Include="DataSection\StrStream.h">
+      <Filter>DataSection</Filter>
+    </ClInclude>
     <ClInclude Include="DataSection\xml.h">
       <Filter>DataSection</Filter>
     </ClInclude>
     <ClInclude Include="DataSection\xmlParser.h">
       <Filter>DataSection</Filter>
-    </ClInclude>
-    <ClInclude Include="DataSection\StrStream.h">
-      <Filter>DataSection</Filter>
-    </ClInclude>
-    <ClInclude Include="RefPtr.h">
-      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

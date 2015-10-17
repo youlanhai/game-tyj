@@ -37,6 +37,16 @@ tstring convertValue(tstring src)
 //////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////
+/*static*/ LZDataPtr lzd::createFromFile(const tstring & fname)
+{
+    LZDataPtr p = new lzd();
+    if(!p->load(fname))
+    {
+        p = NULL;
+    }
+    return p;
+}
+
 bool lzd::loadFromBuffer(const tchar* buffer, int length)
 {
     cParser parser(new StrStream(buffer, length), this, 1);

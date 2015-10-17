@@ -17,6 +17,8 @@ class LZDATA_API lzd : public LZDataBase
 {
 public:
 
+    static LZDataPtr createFromFile(const tstring & fname);
+
     lzd(void);
 
     lzd(const tstring & tag);
@@ -39,5 +41,6 @@ private:
     const lzd& operator=(const lzd&);
 };
 
+typedef lzd Lzd;
 
 }//namespace Lazy
