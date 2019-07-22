@@ -24,5 +24,6 @@ Release/
 *.opensdf
 *.exp
 ipch/
+*.vcxproj.user
 
 save.dat
